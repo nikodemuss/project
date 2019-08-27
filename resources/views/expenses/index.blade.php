@@ -3,6 +3,8 @@
 @section('content')
 <div class="container">
     <p>Expenses</p>
+    @foreach ($expenses as $expense)
+
     <div class="d-flex">
         <p>Expense Name</p>
         <p>Type</p>
@@ -11,5 +13,8 @@
         <p>Subtotal</p>
         <p>Grand Total</p>
     </div>
+    
+    @endforeach
+
 </div>
 @endsection

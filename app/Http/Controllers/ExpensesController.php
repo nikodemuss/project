@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ExpenseController extends Controller
+class ExpensesController extends Controller
 {
     public function index(){
-        return view('expneses/index');
+        return view('expenses/index');
+    }
+
+    public function create(){
+        return view('expenses/create');
     }
 }
