@@ -10,4 +10,8 @@ class CompanyController extends Controller
         $users = auth()->user()->company()->pluck('company.user_id');
         dd(users);
     }
+
+    public function create(){
+        request()->all();
+    }
 }

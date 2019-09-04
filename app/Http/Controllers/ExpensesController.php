@@ -7,6 +7,10 @@ use App\User;
 
 class ExpensesController extends Controller
 {
+    public function _construct(){
+        $this->middleware('auth');
+    }
+
     public function index(){
         return view('expenses/index');
     }
@@ -30,7 +34,7 @@ class ExpensesController extends Controller
         // dd($data);
 
         // \App\Expenses::create(compact($data,"user_id" => "1"));
-        auth()->user()->company()->expenses()->create(array_merge($data));
+        auth()->user()->company()->expenses()->create(array_merge($data, ["company_id" => "1"]));
         // dd(request()->all());
 
         return redirect('expenses/index');
