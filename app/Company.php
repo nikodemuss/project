@@ -8,6 +8,10 @@ class Company extends Model
 {
     public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasMany(User::class);
+    }
+
+    public function expenses(){
+        return $this->hasMany(Expenses::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class ExpensesController extends Controller
 {
@@ -14,7 +15,7 @@ class ExpensesController extends Controller
         return view('expenses/create');
     }
 
-    public function store(){
+    public function store(User $user){
 
         $data = request()->validate([
             "_token" => "required",
@@ -25,8 +26,11 @@ class ExpensesController extends Controller
             "subtotal" => "required",
             "tax" => "required"
         ]);
+        
+        // dd($data);
 
-        \App\Expenses::create($data);
+        // \App\Expenses::create(compact($data,"user_id" => "1"));
+        auth()->user()->company()->expenses()->create(array_merge($data));
         // dd(request()->all());
 
         return redirect('expenses/index');
