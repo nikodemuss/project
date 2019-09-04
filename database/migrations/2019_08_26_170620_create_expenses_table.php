@@ -19,6 +19,7 @@ class CreateExpensesTable extends Migration
             $table->string('category');
             $table->string('currency');
             $table->string('vendor');
+            $table->string('date');
             $table->string('description')->nullable();
             $table->unsignedBigInteger('subtotal');
             $table->unsignedBigInteger('tax')->nullable();

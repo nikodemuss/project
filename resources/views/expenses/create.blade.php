@@ -3,7 +3,7 @@
 @section('content')
 <div class="content">
     <h1>Add New Expense</h1>
-    <form method="POST" action="">
+    <form method="POST" action="/expenses">
         @csrf
 
         <div class="form-group row">

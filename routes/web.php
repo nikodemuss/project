@@ -25,5 +25,6 @@ Route::get('/client/create', 'ClientController@create')->name('client');
 
 Route::get('/expenses', 'ExpensesController@index')->name('expenses');
 Route::get('/expenses/create', 'ExpensesController@create')->name('expenses');
+Route::post('/expenses', 'ExpensesController@store');
 
 Route::get('/company', 'CompanyController@index')->name('company');
