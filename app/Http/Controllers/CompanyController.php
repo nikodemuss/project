@@ -23,6 +23,7 @@ class CompanyController extends Controller
         $data = request()->validate([
             "_token" => "required",
             "name" => "required",
+            "category" => "required",
             "phone" => "required",
             "city" => "required",
             "state" => "required",
