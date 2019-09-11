@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 class CompanyController extends Controller
 {
     public function index(){
-        // $users = ;
-        // dd(auth()->user()->company());
+        // TODO: 
         $companies = \App\Company::all();
         dd($companies);
 

@@ -12,7 +12,9 @@ class ExpensesController extends Controller
     }
 
     public function index(){
-        return view('expenses/index');
+        // TODO: 
+        $expenses = \App\Expenses::all();
+        return view('expenses/index', compact('expenses'));
     }
 
     public function create(){
