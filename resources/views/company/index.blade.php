@@ -7,6 +7,8 @@
     <div class="">
         <p>Name: {{ $company->name }}</p>
         <br>
+        <p>Category {{ $company->category }}</p>
+        <br>
         <p>Phone {{ $company->phone }}</p>
         <br>
         <p>Street {{ $company->street }}</p>

@@ -10,7 +10,7 @@ class CompanyController extends Controller
         // $users = ;
         // dd(auth()->user()->company());
         $companies = \App\Company::all();
-        // dd($companies);
+        dd($companies);
 
         return view("company.index", compact('companies'));
     }
