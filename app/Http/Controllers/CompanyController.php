@@ -7,11 +7,25 @@ use Illuminate\Http\Request;
 class CompanyController extends Controller
 {
     public function index(){
-        $users = auth()->user()->company()->pluck('company.user_id');
-        dd(users);
+        // $users = ;
+        // dd(auth()->user()->company());
+        $company = \App\Company::all();
+        dd($company);
     }
 
     public function create(){
-        request()->all();
+        return view("company.create");
+    }
+
+    public function store(){
+        $data = request()->validate([
+            "_token" => "required",
+            "name" => "required",
+            "city" => "required",
+            "currency" => "required"
+        ]);
+
+        // dd($data);
+        auth()->user()->company()->create($data);
     }
 }

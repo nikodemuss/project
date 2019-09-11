@@ -37,19 +37,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
-        static::created(function ($user) {
-            $user->profile()->create([
-                'title' => $user->username,
-            ]);
-            Mail::to($user->email)->send(new NewUserWelcomeMail());
-        });
-    }
+    // protected static function boot()
+    // {
+    //     parent::boot();
+    //     static::created(function ($user) {
+    //         $user->profile()->create([
+    //             'title' => $user->username,
+    //         ]);
+    //         Mail::to($user->email)->send(new NewUserWelcomeMail());
+    //     });
+    // }
 
     public function company()
     {
-        return $this->belongTo(Company::class);
+        return $this->belongsTo(Company::class);
     }
+
+    // public function company()
+    // {
+    //     return $this->hasOne('App\User', 'foreign_key', 'local_key');
+    // }
 }

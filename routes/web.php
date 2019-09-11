@@ -28,3 +28,5 @@ Route::get('/expenses/create', 'ExpensesController@create')->name('expenses');
 Route::post('/expenses', 'ExpensesController@store');
 
 Route::get('/company', 'CompanyController@index')->name('company');
+Route::post('/company', 'CompanyController@store')->name('company');
+Route::get('/company/create', 'CompanyController@create')->name('company');
