@@ -9,7 +9,7 @@ class CompanyController extends Controller
     public function index(){
         // TODO: 
         $companies = \App\Company::all();
-        dd($companies);
+        // dd($companies);
 
         return view("company.index", compact('companies'));
     }

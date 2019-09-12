@@ -24,6 +24,7 @@ class CreateCompaniesTable extends Migration
             $table->unsignedInteger('zipCode')->nullable();
             $table->string('country')->nullable();
             $table->string('currency');
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }
