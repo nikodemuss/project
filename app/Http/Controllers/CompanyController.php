@@ -9,7 +9,7 @@ class CompanyController extends Controller
     public function index(){
         // TODO: 
         $companies = \App\Company::all();
-        // dd($companies);
+        //  dd($companies);
 
         return view("company.index", compact('companies'));
     }
@@ -35,5 +35,11 @@ class CompanyController extends Controller
         // dd($data);
         auth()->user()->company()->create($data);
         return redirect("/company");
+    }
+
+    public function show($id){
+        $company = \Illuminate\Support\Facades\DB::table('companies')->where('id', $id)->get();
+        // dd($company);
+        return view("company.show", compact('company'));
     }
 }

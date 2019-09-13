@@ -5,8 +5,11 @@
     @foreach ($companies as $company)
 
     <div class="">
-        <p>Name: {{ $company->name }}</p>
-        {{-- <br>
+        <div>
+            <p>{{ $company->name }}</p>
+        </div>
+
+        <br>
         <p>Category {{ $company->category }}</p>
         <br>
         <p>Phone {{ $company->phone }}</p>
@@ -21,9 +24,9 @@
         <br>
         <p>Country {{ $company->country }}</p>
         <br>
-        <p>Currency {{ $company->currency }}</p> --}}
+        <p>Currency {{ $company->currency }}</p>
     </div>
-    
+
     @endforeach
 </div>
 @endsection
