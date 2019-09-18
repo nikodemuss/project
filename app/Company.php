@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
+    use Searchable;
     protected $guarded = [];
     
     public function user()
@@ -16,5 +17,10 @@ class Company extends Model
 
     public function expenses(){
         return $this->hasMany(Expenses::class);
+    }
+
+    public function searchableAs()
+    {
+        return 'name';
     }
 }
