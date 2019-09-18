@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class CompanyController extends Controller
 {
@@ -75,7 +76,10 @@ class CompanyController extends Controller
         return redirect("/company");
     }
 
-    public function search($search){
+    public function search(){
+        $search = Input::get('search');
+        // dd($search);
+
         $companies = \App\Company::search($search)->get();
         return view("company.index", compact('companies'));
         // dd();

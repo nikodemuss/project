@@ -7,4 +7,6 @@ use Illuminate\Http\Request;
 class SearchController extends Controller
 {
    //search method moved to CompanyController
+
+   
 }
