@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function index(){
-        $companies = \App\Company::search("test")->get();
+    public function search($search){
+        $companies = \App\Company::search($search)->paginate(15);
         return view("company.index", compact('companies'));
         // dd();
     }

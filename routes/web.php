@@ -34,4 +34,4 @@ Route::get('/company/{id}/edit', 'CompanyController@edit')->name('company.edit')
 Route::get('/company/{id}', 'CompanyController@show')->name('company.show');
 Route::patch('/company/{id}', 'CompanyController@update')->name('company.update');
 
-Route::get('/search', 'SearchController@index')->name('search');
+Route::get('/search/{search}', 'SearchController@search')->name('search');
