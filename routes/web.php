@@ -32,3 +32,4 @@ Route::post('/company', 'CompanyController@store')->name('company.store');
 Route::get('/company/create', 'CompanyController@create')->name('company.create');
 Route::get('/company/{id}/edit', 'CompanyController@edit')->name('company.edit');
 Route::get('/company/{id}', 'CompanyController@show')->name('company.show');
+Route::patch('/company/{id}', 'CompanyController@update')->name('company.update');

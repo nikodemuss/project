@@ -3,15 +3,16 @@
 @section('content')
 <div class="content">
     <h1>Edit New Company</h1>
-    <form method="POST" action="/company/update">
+    <form method="POST" action="/company/{{ $company->id }}">
         @csrf
+        @method('PATCH')
 
         <div class="form-group row">
             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Company Name') }}</label>
 
             <div class="col-md-6">
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                    value="{{ $company[0]->name }}" required autocomplete="name" autofocus>
+                    value="{{ $company->name }}" required autocomplete="name" autofocus>
 
                 @error('name')
                 <span class="invalid-feedback" role="alert">
@@ -26,7 +27,7 @@
 
             <div class="col-md-6">
                 <input id="category" type="text" class="form-control @error('category') is-invalid @enderror" name="category"
-                    value="{{ $company[0]->category }}" required autocomplete="category" autofocus>
+                    value="{{ $company->category }}" required autocomplete="category" autofocus>
 
                 @error('category')
                 <span class="invalid-feedback" role="alert">
@@ -41,7 +42,7 @@
 
             <div class="col-md-6">
                 <input id="phone" type="number" class="form-control @error('name') is-invalid @enderror" name="phone"
-                    value="{{ $company[0]->phone }}" required autocomplete="name" autofocus>
+                    value="{{ $company->phone }}" required autocomplete="name" autofocus>
 
                 @error('phone')
                 <span class="invalid-feedback" role="alert">
@@ -56,7 +57,7 @@
 
             <div class="col-md-6">
                 <input id="street" type="text" class="form-control @error('name') is-invalid @enderror" name="street"
-                    value="{{ $company[0]->street }}" required autocomplete="name" autofocus>
+                    value="{{ $company->street }}" required autocomplete="name" autofocus>
 
                 @error('street')
                 <span class="invalid-feedback" role="alert">
@@ -71,7 +72,7 @@
 
             <div class="col-md-6">
                 <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city"
-                    value="{{ $company[0]->city }}" required autocomplete="city">
+                    value="{{ $company->city }}" required autocomplete="city">
 
                 @error('city')
                 <span class="invalid-feedback" role="alert">
@@ -86,7 +87,7 @@
 
             <div class="col-md-6">
                 <input id="state" type="text" class="form-control @error('name') is-invalid @enderror" name="state"
-                    value="{{ $company[0]->state }}" required autocomplete="name" autofocus>
+                    value="{{ $company->state }}" required autocomplete="name" autofocus>
 
                 @error('state')
                 <span class="invalid-feedback" role="alert">
@@ -101,7 +102,7 @@
 
             <div class="col-md-6">
                 <input id="zipCode" type="text" class="form-control @error('name') is-invalid @enderror" name="zipCode"
-                    value="{{ $company[0]->zipCode }}" required autocomplete="name" autofocus>
+                    value="{{ $company->zipCode }}" required autocomplete="name" autofocus>
 
                 @error('zipCode')
                 <span class="invalid-feedback" role="alert">
@@ -116,7 +117,7 @@
 
             <div class="col-md-6">
                 <input id="country" type="text" class="form-control @error('name') is-invalid @enderror" name="country"
-                    value="{{ $company[0]->country }}" required autocomplete="name" autofocus>
+                    value="{{ $company->country }}" required autocomplete="name" autofocus>
 
                 @error('country')
                 <span class="invalid-feedback" role="alert">
@@ -131,7 +132,7 @@
 
             <div class="col-md-6">
                 <input id="currency" type="text" class="form-control @error('name') is-invalid @enderror" name="currency"
-                    value="{{ $company[0]->currency }}" required autocomplete="name" autofocus>
+                    value="{{ $company->currency }}" required autocomplete="name" autofocus>
 
                 @error('currency')
                 <span class="invalid-feedback" role="alert">

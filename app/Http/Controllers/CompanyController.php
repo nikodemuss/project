@@ -38,17 +38,40 @@ class CompanyController extends Controller
     }
 
     public function show($id){
-        $company = \Illuminate\Support\Facades\DB::table('companies')->where('id', $id)->get();
+        // $company = \Illuminate\Support\Facades\DB::table('companies')->where('id', $id)->get();
+        $company = \App\Company::findOrFail($id);
+
         // dd($company);
         return view("company.show", compact('company'));
     }
 
     public function edit($id){
-        $company = \Illuminate\Support\Facades\DB::table('companies')->where('id', $id)->get();
+        // $company = \Illuminate\Support\Facades\DB::table('companies')->where('id', $id)->get();
+        $company = \App\Company::findOrFail($id);
+        
         return view("company.edit", compact('company'));
     }
 
-    public function update(){
+    public function update($id){
+        // $company = \Illuminate\Support\Facades\DB::table('companies')->where('id', $id)->get();
 
+        $data = request()->validate([
+            "_token" => "required",
+            "name" => "required",
+            "category" => "required",
+            "phone" => "required",
+            "city" => "required",
+            "state" => "required",
+            "street" => "required",
+            "zipCode" => "required",
+            "country" => "required",
+            "currency" => "required"
+        ]);
+
+        // dd($data);
+        $company = \App\Company::findOrFail($id);
+        // dd($company);
+        $company->update($data);
+        return redirect("/company");
     }
 }
