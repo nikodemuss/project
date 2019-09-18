@@ -33,7 +33,7 @@ class CompanyController extends Controller
         ]);
 
         // dd($data);
-        auth()->user()->company()->create($data);
+        auth()->user()->company()->create($data)->searchable();
         return redirect("/company");
     }
 
@@ -71,7 +71,13 @@ class CompanyController extends Controller
         // dd($data);
         $company = \App\Company::findOrFail($id);
         // dd($company);
-        $company->update($data);
+        $company->update($data)->searchable();
         return redirect("/company");
+    }
+
+    public function search($search){
+        $companies = \App\Company::search($search)->get();
+        return view("company.index", compact('companies'));
+        // dd();
     }
 }
