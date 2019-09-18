@@ -42,4 +42,13 @@ class CompanyController extends Controller
         // dd($company);
         return view("company.show", compact('company'));
     }
+
+    public function edit($id){
+        $company = \Illuminate\Support\Facades\DB::table('companies')->where('id', $id)->get();
+        return view("company.edit", compact('company'));
+    }
+
+    public function update(){
+
+    }
 }

@@ -30,4 +30,5 @@ Route::post('/expenses', 'ExpensesController@store');
 Route::get('/company', 'CompanyController@index')->name('company');
 Route::post('/company', 'CompanyController@store')->name('company.store');
 Route::get('/company/create', 'CompanyController@create')->name('company.create');
+Route::get('/company/{id}/edit', 'CompanyController@edit')->name('company.edit');
 Route::get('/company/{id}', 'CompanyController@show')->name('company.show');
