@@ -26,6 +26,6 @@
         <p>Currency: {{ $company->currency }}</p>
     </div>
 
-    <a href="/company{{ $company->id }}/edit">edit</a>
+    <a href="/company/{{ $company->id }}/edit">edit</a>
 </div>
 @endsection
