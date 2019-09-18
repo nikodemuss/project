@@ -26,6 +26,9 @@ class CreateCompaniesTable extends Migration
             $table->string('currency');
             $table->string('url')->nullable();
             $table->timestamps();
+
+            // $table->index('user_id');
+
         });
     }
 
