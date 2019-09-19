@@ -1,0 +1,13 @@
+#navbar {
+    background-color: #B5D7FF;
+}
+
+.navbar-light .navbar-brand {
+    color: #3490dc;
+}
+
+.form-border-20 {
+    border-radius: 20px;
+    height: 26px;
+    /* margin-top: 4px; */
+}
