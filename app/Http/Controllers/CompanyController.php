@@ -91,4 +91,12 @@ class CompanyController extends Controller
         return view("company.index", compact('companies'));
         // dd();
     }
+    
+    public function destroy(){
+        // dd(request()->id);
+        $company = \App\Company::findOrFail(request()->id);
+        // dd($company);
+        $company->delete();
+        return redirect("/company");
+    }
 }

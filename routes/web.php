@@ -35,3 +35,4 @@ Route::get('/company/{id}', 'CompanyController@show')->name('company.show');
 Route::patch('/company/{id}', 'CompanyController@update')->name('company.update')->middleware('auth');
 // Route::get('/search/{search}', 'CompanyController@search')->name('search');
 Route::post('/search', 'CompanyController@search')->name('search');
+Route::delete('/company/{id}', 'CompanyController@destroy')->name('photo.destroy');

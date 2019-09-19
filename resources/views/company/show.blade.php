@@ -27,5 +27,20 @@
     </div>
 
     <a href="/company/{{ $company->id }}/edit">edit</a>
+    <form method="POST" action="/company/{{ $company->id }}">
+        @csrf
+        @method('DELETE')
+
+        <input id="id" type="hidden" class="form-control @error('id') is-invalid @enderror" name="id" value="{{ $company->id }}" required autocomplete="id" autofocus>
+
+        <div class="form-group row mb-0">
+            <div class="col-md-6 offset-md-4">
+                <button type="submit" class="btn btn-primary">
+                    {{ __('Delete') }}
+                </button>
+            </div>
+        </div>
+    </form>
+
 </div>
 @endsection
