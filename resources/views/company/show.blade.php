@@ -23,7 +23,7 @@
         <br>
         <p>Country: {{ $company->country }}</p>
         <br>
-        <p>Currency: {{ $company->currency }}</p>
+        <p>Currency: {{ $company->currency }}</p> 
     </div>
 
     <a href="/company/{{ $company->id }}/edit">edit</a>
