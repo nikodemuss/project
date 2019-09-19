@@ -55,7 +55,7 @@ class CompanyController extends Controller
     public function edit($id){
         // $company = \Illuminate\Support\Facades\DB::table('companies')->where('id', $id)->get();
         $company = \App\Company::findOrFail($id);
-        $this->authorize('update', $company->user);
+        // $this->authorize('update', $company->user);
         
         return view("company.edit", compact('company'));
     }
@@ -79,7 +79,7 @@ class CompanyController extends Controller
         // dd($data);
         $company = \App\Company::findOrFail($id);
         // dd($company);
-        $company->update($data)->searchable();
+        $company->update($data);
         return redirect("/company");
     }
 
