@@ -3,22 +3,22 @@
 @section('content')
 <div class="container">
 
-    <div class="d-flex justify-content-between">
-        <p>Company Name</p>
-        <p>Category</p>
-        <p>City</p>
-        <p>Country</p>
+    <div class="row">
+        <p class="col-md-3">Company Name</p>
+        <p class="col-md-3">Category</p>
+        <p class="col-md-3">City</p>
+        <p class="col-md-3">Country</p>
     </div>
     @foreach ($companies as $company)
 
     <a href="/company/{{ $company->id}}">
         <div class="card mb-4">
             <div class="card-body">
-                <a href="/company/{{ $company->id}}" class="d-flex justify-content-between">
-                <h4 class="card-title">{{ $company->name }}</h4>
-                <p class="card-text">{{ $company->category }}</p>
-                <p class="card-text">{{ $company->city }}</p>
-                <p class="card-text">{{ $company->country }}</p>
+                <a href="/company/{{ $company->id}}" class="row">
+                <h4 class="card-title col-md-3">{{ $company->name }}</h4>
+                <p class="card-text col-md-3">{{ $company->category }}</p>
+                <p class="card-text col-md-3">{{ $company->city }}</p>
+                <p class="card-text col-md-3">{{ $company->country }}</p>
                 <!-- <a href="{{ $company->url }}" class="card-link">{{ $company->url }}</a> -->
                 </a>
             </div>
