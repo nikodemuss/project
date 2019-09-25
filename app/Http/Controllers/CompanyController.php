@@ -39,8 +39,11 @@ class CompanyController extends Controller
             "country" => "required",
             "currency" => "required"
         ]);
+        
         // dd($data);
-        auth()->user()->company()->create($data)->searchable();
+        $company = new \App\Company;
+        $company->create(array_merge($data, ["user_id" => auth()->user()->id]))->searchable();
+        // auth()->user()->company()->create($data)->searchable();
         return redirect("/company");
     }
 

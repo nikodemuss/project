@@ -36,7 +36,10 @@ class ExpensesController extends Controller
         // dd($data);
 
         // \App\Expenses::create(compact($data,"user_id" => "1"));
-        auth()->user()->company()->expenses()->create(array_merge($data, ["company_id" => "1"]));
+        // auth()->user()->company()->expenses()->create(array_merge($data, ["company_id" => "1"]));
+        dd(auth()->user()->company());
+        dd(\App\Company::findOrFail());
+        // \App\Company::findOrFail();
         // dd(request()->all());
 
         return redirect('expenses/index');
