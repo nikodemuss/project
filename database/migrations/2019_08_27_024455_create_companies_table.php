@@ -15,7 +15,7 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('user_id');
+            // $table->unsignedInteger('user_id');
             $table->string('name');
             $table->string('category');
             $table->string('phone')->nullable();
@@ -28,7 +28,7 @@ class CreateCompaniesTable extends Migration
             $table->string('url')->nullable();
             $table->timestamps();
 
-            $table->index('user_id');
+            // $table->index('user_id');
 
         });
     }

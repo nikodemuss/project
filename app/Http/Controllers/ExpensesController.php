@@ -37,8 +37,8 @@ class ExpensesController extends Controller
 
         // \App\Expenses::create(compact($data,"user_id" => "1"));
         // auth()->user()->company()->expenses()->create(array_merge($data, ["company_id" => "1"]));
-        dd(auth()->user()->company());
-        dd(\App\Company::findOrFail());
+        
+        dd(\App\Company::where("user_id",auth()->user()->id)->get());
         // \App\Company::findOrFail();
         // dd(request()->all());
 
