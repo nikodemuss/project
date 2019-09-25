@@ -41,9 +41,12 @@ class CompanyController extends Controller
         ]);
         
         // dd($data);
-        $company = new \App\Company;
-        $company->create(array_merge($data, ["user_id" => auth()->user()->id]))->searchable();
-        // auth()->user()->company()->create($data)->searchable();
+        // $company = new \App\Company;
+        // $company->create(array_merge($data, ["user_id" => auth()->user()->id]))->searchable();
+        $companyId = auth()->user()->company()->create($data);
+        $companyId->searchable();
+        
+        auth()->user()->update(["company_id" => $companyId->id]);
         return redirect("/company");
     }
 

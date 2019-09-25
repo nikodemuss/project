@@ -33,12 +33,11 @@ class ExpensesController extends Controller
             "tax" => "required"
         ]);
         
-        // dd($data);
+        dd(auth()->user()->company());
 
         // \App\Expenses::create(compact($data,"user_id" => "1"));
         // auth()->user()->company()->expenses()->create(array_merge($data, ["company_id" => "1"]));
         
-        dd(\App\Company::where("user_id",auth()->user()->id)->get());
         // \App\Company::findOrFail();
         // dd(request()->all());
 
