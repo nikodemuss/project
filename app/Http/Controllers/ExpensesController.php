@@ -19,6 +19,7 @@ class ExpensesController extends Controller
 
     public function create(){
         return view('expenses/create');
+        
     }
 
     public function store(User $user){
@@ -30,16 +31,12 @@ class ExpensesController extends Controller
             "vendor" => "required",
             "description" => "",
             "subtotal" => "required",
+            "currency" => "required",
             "tax" => "required"
         ]);
-        
-        dd(auth()->user()->company());
 
-        // \App\Expenses::create(compact($data,"user_id" => "1"));
-        // auth()->user()->company()->expenses()->create(array_merge($data, ["company_id" => "1"]));
         
-        // \App\Company::findOrFail();
-        // dd(request()->all());
+        \App\Expenses::create(array_merge($data,["company_id" => auth()->user()->company_id],["grand_total" => $data["subtotal"] + $data["tax"]]));
 
         return redirect('expenses/index');
     }

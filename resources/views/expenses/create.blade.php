@@ -52,6 +52,21 @@
         </div>
 
         <div class="form-group row">
+            <label for="currency" class="col-md-4 col-form-label text-md-right">{{ __('Currency') }}</label>
+
+            <div class="col-md-6">
+                <input id="currency" type="text" class="form-control @error('currency') is-invalid @enderror" name="currency"
+                    value="{{ old('currency') }}" required autocomplete="currency">
+
+                @error('currency')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+        </div>
+
+        <div class="form-group row">
             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Add Description (optional)') }}</label>
 
             <div class="col-md-6">
@@ -65,6 +80,7 @@
                 @enderror
             </div>
         </div>
+        
 
         <div class="form-group row">
             <label for="subtotal" class="col-md-4 col-form-label text-md-right">{{ __('Subtotal') }}</label>
