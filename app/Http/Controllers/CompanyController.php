@@ -16,7 +16,6 @@ class CompanyController extends Controller
     public function index(){
         // TODO: 
         $companies = \App\Company::all();
-        //  dd($companies);
 
         return view("company.index", compact('companies'));
     }
@@ -40,13 +39,13 @@ class CompanyController extends Controller
             "currency" => "required"
         ]);
         
-        // dd($data);
-        // $company = new \App\Company;
-        // $company->create(array_merge($data, ["user_id" => auth()->user()->id]))->searchable();
         $companyId = auth()->user()->company()->create($data);
         $companyId->searchable();
         
-        auth()->user()->update(["company_id" => $companyId->id]);
+        $user = auth()->user();
+        $user->company_id = $companyId->id;
+        auth()->user()->save();
+
         return redirect("/company");
     }
 
