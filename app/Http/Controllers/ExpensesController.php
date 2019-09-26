@@ -13,8 +13,9 @@ class ExpensesController extends Controller
 
     public function index(){
         // TODO: 
-        $expenses = \App\Expenses::all();
-        return view('expenses/index', compact('expenses'));
+    $expenses = \App\Expenses::where('company_id', auth()->user()->id)->get();
+    // dd($expenses);
+    return view('expenses.index', compact('expenses'));
     }
 
     public function create(){
@@ -38,6 +39,6 @@ class ExpensesController extends Controller
         
         \App\Expenses::create(array_merge($data,["company_id" => auth()->user()->company_id],["grand_total" => $data["subtotal"] + $data["tax"]]));
 
-        return redirect('expenses/index');
+        return redirect('expenses');
     }
 }
