@@ -12,9 +12,7 @@ class ExpensesController extends Controller
     }
 
     public function index(){
-        // TODO: 
     $expenses = \App\Expenses::where('company_id', auth()->user()->id)->get();
-    // dd($expenses);
     return view('expenses.index', compact('expenses'));
     }
 
@@ -24,7 +22,6 @@ class ExpensesController extends Controller
     }
 
     public function store(User $user){
-
         $data = request()->validate([
             "_token" => "required",
             "category" => "required",
@@ -35,10 +32,15 @@ class ExpensesController extends Controller
             "currency" => "required",
             "tax" => "required"
         ]);
-
         
         \App\Expenses::create(array_merge($data,["company_id" => auth()->user()->company_id],["grand_total" => $data["subtotal"] + $data["tax"]]));
 
         return redirect('expenses');
+    }
+
+    public function show($id){
+        $expense = \App\Expenses::findOrFail($id);
+        dd($expense);
+        return view('expenses.show',compact('expense'));
     }
 }
