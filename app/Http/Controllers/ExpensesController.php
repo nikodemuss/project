@@ -40,7 +40,7 @@ class ExpensesController extends Controller
 
     public function show($id){
         $expense = \App\Expenses::findOrFail($id);
-        dd($expense);
+        // dd($expense);
         return view('expenses.show',compact('expense'));
     }
 }
