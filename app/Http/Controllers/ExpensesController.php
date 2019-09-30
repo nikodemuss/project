@@ -43,4 +43,26 @@ class ExpensesController extends Controller
         // dd($expense);
         return view('expenses.show',compact('expense'));
     }
+
+    public function edit($id){
+        $expense = \App\Expenses::findOrFail($id);
+        // dd($expense);
+        return view('expenses.edit',compact('expense'));
+    }
+
+    public function update($id){
+        $data = request()->validate([
+            "_token" => "required",
+            "category" => "required",
+            "date" => "required",
+            "vendor" => "required",
+            "description" => "",
+            "subtotal" => "required",
+            "currency" => "required",
+            "tax" => "required"
+        ]);
+        $expense = \App\Expenses::findOrFail($id);
+        $expense->update($data);
+        return redirect('expenses/company');
+    }
 }

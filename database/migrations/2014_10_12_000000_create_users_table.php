@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
 
             $table->index('company_id');
+            // $table->foreign('')->from()->u
 
         });
     }

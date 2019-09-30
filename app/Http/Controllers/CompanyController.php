@@ -16,7 +16,7 @@ class CompanyController extends Controller
     public function index(){
         // TODO: 
         $companies = \App\Company::all();
-
+        dd(auth()->user()->company());
         return view("company.index", compact('companies'));
     }
 
@@ -83,6 +83,7 @@ class CompanyController extends Controller
 
         // dd($data);
         $company = \App\Company::findOrFail($id);
+        
         // dd($company);
         $company->update($data);
         return redirect("/company");

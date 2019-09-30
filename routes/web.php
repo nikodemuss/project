@@ -26,6 +26,7 @@ Route::get('/client/create', 'ClientController@create')->name('client');
 Route::get('/expenses', 'ExpensesController@index')->name('expenses');
 Route::get('/expenses/create', 'ExpensesController@create')->name('expenses');
 Route::post('/expenses', 'ExpensesController@store');
+Route::get('/expenses/{id}/edit', 'ExpensesController@edit');
 Route::get('/expenses/{id}', 'ExpensesController@show');
 
 Route::get('/company', 'CompanyController@index')->name('company');
