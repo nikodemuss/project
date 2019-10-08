@@ -55,8 +55,9 @@ class CompanyController extends Controller
     public function edit($id){
         // $company = \Illuminate\Support\Facades\DB::table('companies')->where('id', $id)->get();
         $company = \App\Company::findOrFail($id);
-        $this->authorize('update', $company->user);
         
+        dd(auth()->user()->company()->pluck('id'));
+
         return view("company.edit", compact('company'));
     }
 
