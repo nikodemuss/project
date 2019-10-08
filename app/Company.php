@@ -12,8 +12,13 @@ class Company extends Model
     
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany('App\User');
     }
+
+    // public static function userById($id)
+    // {
+    //     return $this->hasMany(User::findOrFail($id));
+    // }
 
     public function expenses(){
         return $this->hasMany(Expenses::class);

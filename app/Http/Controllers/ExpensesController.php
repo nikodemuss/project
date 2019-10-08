@@ -12,17 +12,16 @@ class ExpensesController extends Controller
     }
 
     public function index(){
-        // TODO: 
-        $expenses = \App\Expenses::all();
-        return view('expenses/index', compact('expenses'));
+    $expenses = \App\Expenses::where('company_id', auth()->user()->id)->get();
+    return view('expenses.index', compact('expenses'));
     }
 
     public function create(){
         return view('expenses/create');
+        
     }
 
     public function store(User $user){
-
         $data = request()->validate([
             "_token" => "required",
             "category" => "required",
@@ -30,15 +29,40 @@ class ExpensesController extends Controller
             "vendor" => "required",
             "description" => "",
             "subtotal" => "required",
+            "currency" => "required",
             "tax" => "required"
         ]);
         
-        // dd($data);
+        \App\Expenses::create(array_merge($data,["company_id" => auth()->user()->company_id],["grand_total" => $data["subtotal"] + $data["tax"]]));
 
-        // \App\Expenses::create(compact($data,"user_id" => "1"));
-        auth()->user()->company()->expenses()->create(array_merge($data, ["company_id" => "1"]));
-        // dd(request()->all());
+        return redirect('expenses');
+    }
 
-        return redirect('expenses/index');
+    public function show($id){
+        $expense = \App\Expenses::findOrFail($id);
+        // dd($expense);
+        return view('expenses.show',compact('expense'));
+    }
+
+    public function edit($id){
+        $expense = \App\Expenses::findOrFail($id);
+        // dd($expense);
+        return view('expenses.edit',compact('expense'));
+    }
+
+    public function update($id){
+        $data = request()->validate([
+            "_token" => "required",
+            "category" => "required",
+            "date" => "required",
+            "vendor" => "required",
+            "description" => "",
+            "subtotal" => "required",
+            "currency" => "required",
+            "tax" => "required"
+        ]);
+        $expense = \App\Expenses::findOrFail($id);
+        $expense->update($data);
+        return redirect('expenses/company');
     }
 }

@@ -16,8 +16,6 @@ class CompanyController extends Controller
     public function index(){
         // TODO: 
         $companies = \App\Company::all();
-        //  dd($companies);
-
         return view("company.index", compact('companies'));
     }
 
@@ -39,8 +37,14 @@ class CompanyController extends Controller
             "country" => "required",
             "currency" => "required"
         ]);
-        // dd($data);
-        auth()->user()->company()->create($data)->searchable();
+        
+        $companyId = auth()->user()->company()->create($data);
+        $companyId->searchable();
+        
+        $user = auth()->user();
+        $user->company_id = $companyId->id;
+        auth()->user()->save();
+
         return redirect("/company");
     }
 
@@ -55,6 +59,10 @@ class CompanyController extends Controller
     public function edit($id){
         // $company = \Illuminate\Support\Facades\DB::table('companies')->where('id', $id)->get();
         $company = \App\Company::findOrFail($id);
+<<<<<<< HEAD
+=======
+        // $this->authorize('update', $company->user);
+>>>>>>> ff223566f7c1e9f017fbf7d12c8ec07901778820
         
         dd(auth()->user()->company()->pluck('id'));
 
@@ -79,8 +87,9 @@ class CompanyController extends Controller
 
         // dd($data);
         $company = \App\Company::findOrFail($id);
+        
         // dd($company);
-        $company->update($data)->searchable();
+        $company->update($data);
         return redirect("/company");
     }
 
@@ -91,5 +100,13 @@ class CompanyController extends Controller
         $companies = \App\Company::search($search)->get();
         return view("company.index", compact('companies'));
         // dd();
+    }
+    
+    public function destroy(){
+        // dd(request()->id);
+        $company = \App\Company::findOrFail(request()->id);
+        // dd($company);
+        $company->delete();
+        return redirect("/company");
     }
 }

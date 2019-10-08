@@ -26,6 +26,8 @@ Route::get('/client/create', 'ClientController@create')->name('client');
 Route::get('/expenses', 'ExpensesController@index')->name('expenses');
 Route::get('/expenses/create', 'ExpensesController@create')->name('expenses');
 Route::post('/expenses', 'ExpensesController@store');
+Route::get('/expenses/{id}/edit', 'ExpensesController@edit');
+Route::get('/expenses/{id}', 'ExpensesController@show');
 
 Route::get('/company', 'CompanyController@index')->name('company');
 Route::post('/company', 'CompanyController@store')->name('company.store')->middleware('auth');
@@ -35,3 +37,4 @@ Route::get('/company/{id}', 'CompanyController@show')->name('company.show');
 Route::patch('/company/{id}', 'CompanyController@update')->name('company.update')->middleware('auth');
 // Route::get('/search/{search}', 'CompanyController@search')->name('search');
 Route::post('/search', 'CompanyController@search')->name('search');
+Route::delete('/company/{id}', 'CompanyController@destroy')->name('photo.destroy')->middleware('auth');

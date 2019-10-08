@@ -48,13 +48,13 @@ class User extends Authenticatable
     //     });
     // }
 
-    public function company()
-    {
-        return $this->belongsTo(Company::class);
-    }
-
     // public function company()
     // {
-    //     return $this->hasOne('App\User', 'foreign_key', 'local_key');
+    //     return $this->belongsTo(Company::class);
     // }
+
+    public function company()
+    {
+        return $this->belongsTo('App\Company');
+    }
 }
