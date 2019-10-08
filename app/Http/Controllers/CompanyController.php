@@ -59,10 +59,7 @@ class CompanyController extends Controller
     public function edit($id){
         // $company = \Illuminate\Support\Facades\DB::table('companies')->where('id', $id)->get();
         $company = \App\Company::findOrFail($id);
-<<<<<<< HEAD
-=======
         // $this->authorize('update', $company->user);
->>>>>>> ff223566f7c1e9f017fbf7d12c8ec07901778820
         
         dd(auth()->user()->company()->pluck('id'));
 
