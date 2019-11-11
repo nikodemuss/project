@@ -62,6 +62,8 @@ class CompanyController extends Controller
         $company = \App\Company::findOrFail($id);
         // $this->authorize('update', $company->user);
 
+        // dd(auth()->user()->company()->pluck('id'));
+
         return view("company.edit", compact('company'));
     }
 

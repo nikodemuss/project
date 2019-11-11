@@ -28,7 +28,7 @@ class CreateCompaniesTable extends Migration
             $table->string('url')->nullable();
             $table->timestamps();
 
-            // $table->index('user_id');
+            $table->index('user_id');
 
         });
     }
