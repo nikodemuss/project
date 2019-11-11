@@ -14,8 +14,9 @@ class CompanyController extends Controller
     }
 
     public function index(){
-        // TODO: 
+        // TODO:
         $companies = \App\Company::all();
+        // dd($companies);
         return view("company.index", compact('companies'));
     }
 
@@ -24,7 +25,7 @@ class CompanyController extends Controller
     }
 
     public function store(){
-    
+
         $data = request()->validate([
             "_token" => "required",
             "name" => "required",
@@ -37,10 +38,10 @@ class CompanyController extends Controller
             "country" => "required",
             "currency" => "required"
         ]);
-        
+
         $companyId = auth()->user()->company()->create($data);
         $companyId->searchable();
-        
+
         $user = auth()->user();
         $user->company_id = $companyId->id;
         auth()->user()->save();
@@ -60,7 +61,7 @@ class CompanyController extends Controller
         // $company = \Illuminate\Support\Facades\DB::table('companies')->where('id', $id)->get();
         $company = \App\Company::findOrFail($id);
         // $this->authorize('update', $company->user);
-        
+
         return view("company.edit", compact('company'));
     }
 
@@ -82,7 +83,7 @@ class CompanyController extends Controller
 
         // dd($data);
         $company = \App\Company::findOrFail($id);
-        
+
         // dd($company);
         $company->update($data);
         return redirect("/company");
@@ -96,7 +97,7 @@ class CompanyController extends Controller
         return view("company.index", compact('companies'));
         // dd();
     }
-    
+
     public function destroy(){
         // dd(request()->id);
         $company = \App\Company::findOrFail(request()->id);
